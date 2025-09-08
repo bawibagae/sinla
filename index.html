@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>シンラ製麺 安国店 | 신라제면 안국점</title>
+<meta name="description" content="シンラ製麺 安国店 - ソウル安国で楽しむ韓国料理と日本の雰囲気 | 신라제면 안국점 - 서울 안국에서 즐기는 한국 요리와 일본 감성">
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family:"Noto Sans JP", sans-serif; line-height:1.6; background:#fafafa; color:#333;}
+a {text-decoration:none; color:inherit;}
+ul {list-style:none;}
+
+header {
+  position: fixed;
+  top:0; left:0; width:100%;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:20px 100px;
+  background: rgba(255,249,244,0.95);
+  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+  z-index:1000;
+}
+.logo img {height:60px;}
+nav ul {display:flex;}
+nav ul li {margin-left:30px;}
+nav ul li a {font-weight:bold; font-size:16px; color:#5c4033; transition:0.3s;}
+nav ul li a:hover {color:#d35400;}
+.menu-button { display:none; font-size:28px; cursor:pointer; background:none; border:none; color:#d35400;}
+
+.hero {
+  position: relative;
+  height:70vh; width:100%;
+  background: url('매장.webp') center/cover no-repeat;
+  display:flex; justify-content:center; align-items:center;
+  text-align:center; color:white;
+  font-size:2.5rem; font-weight:bold;
+}
+.hero::after {
+  content:''; position:absolute; top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.4);
+  z-index:0;
+}
+.hero h1 {
+    position: relative;
+    z-index:1;
+    font-size:1.5rem;
+    padding: 0 10px;
+  }
+
+section {width:100%; padding:100px 20px; display:flex; flex-direction:column; align-items:center;}
+h2 {text-align:center; font-size:2.5rem; margin-bottom:50px; color:#5c4033; position:relative;}
+h2::after {content:''; display:block; width:70px; height:4px; background:#d35400; margin:15px auto 0;}
+
+#intro {background:#fff4e6; color:#5c4033; text-align:center;}
+#intro p {margin-bottom:12px; font-size:18px;}
+#intro a {
+  display:inline-block; padding:12px 25px; margin-top:20px;
+  background:#d35400; color:white; font-weight:bold; border-radius:8px; transition:0.3s;
+}
+#intro a:hover {background:#e67e22;}
+
+#menu {background:#fff9f4;}
+.menu-grid {display:flex; flex-wrap:nowrap; overflow-x:auto; gap:30px; padding-bottom:20px;}
+.menu-item {
+  flex:0 0 auto; width:350px; height:450px;
+  border-radius:20px; overflow:hidden; position:relative;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor:pointer;
+  background:white;
+}
+.menu-item:hover {transform: translateY(-10px); box-shadow:0 15px 30px rgba(0,0,0,0.25);}
+.menu-item img {width:100%; height:100%; object-fit:cover; transition: transform 0.3s;}
+.menu-item:hover img {transform: scale(1.05);}
+.menu-item .text-box {
+  position:absolute; bottom:-140px; width:100%;
+  background: rgba(0,0,0,0.65); color:white;
+  text-align:center; padding:15px 10px; border-radius:0 0 20px 20px;
+  transition: bottom 0.4s ease;
+}
+.menu-item:hover .text-box {bottom:0;}
+.menu-item .text-box h3 {font-size:18px; margin-bottom:5px;}
+.menu-item .text-box p {font-size:15px; margin-bottom:5px;}
+
+#contact, #access, #blog {text-align:center; padding:100px 20px;}
+#contact {background:#fff4e6;} 
+#access {background:#fff9f4;} 
+#blog {background:#fff4e6;} 
+
+footer {background:#5c4033; color:white; text-align:center; padding:40px 20px; font-size:16px;}
+
+@media(max-width:768px){
+  nav ul {display:none; flex-direction:column; position:absolute; top:70px; right:20px; background:rgba(255,249,244,0.95); border-radius:10px; padding:15px; box-shadow:0 5px 20px rgba(0,0,0,0.1);}
+  nav ul.show {display:flex;}
+  .menu-button {display:block;}
+  header {padding:15px 20px;}
+  .menu-grid {gap:20px; padding-bottom:30px;}
+  .menu-item {width:80%; height:350px;}
+  .hero {
+    height: calc(50vh - 60px);
+    font-size:1.5rem;
+    padding-top: 60px;
+    text-align:center;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><a href="index.html"><img src="신라제면.png" alt="シンラ製麺 | 신라제면" loading="lazy"></a></div>
+  <button class="menu-button" onclick="toggleMenu()">☰</button>
+  <nav>
+    <ul id="nav-menu">
+      <li><a href="intro.html">紹介 | 매장 소개</a></li>
+      <li><a href="menu.html">メニュー | 메뉴</a></li>
+      <li><a href="#contact">お問い合わせ | 문의</a></li>
+      <li><a href="#access">アクセス | 오시는 길</a></li>
+      <li><a href="#blog">ブログ | 블로그</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>ようこそ シンラ製麺 安国店へ<br>신라제면 안국점에 오신 것을 환영합니다</h1>
+</div>
+
+<section id="intro">
+  <h2>紹介 | 매장 소개</h2>
+  <p>国内に唯一の高級レストラン！</p>
+  <p>국내 유일의 고급 레스토랑!</p>
+  <p>「高級」という言葉がぴったりのお店です。</p>
+  <p>"고급"이라는 단어가 딱 어울리는 매장입니다.</p>
+  <p>行ったことがない人はいても、一度だけ来た人はいません！</p>
+  <p>가본 적이 없는 사람은 있어도 단 한 번만 온 사람은 없습니다!</p>
+  <p>これ以上お得なレストランはありません！</p>
+  <p>이보다 더 저렴할 수 있는 레스토랑은 없습니다!</p>
+  <p>驚く間もなく美味しい料理を味わえます。</p>
+  <p>놀랄 틈도 없이 맛있는 요리를 맛보실 수 있습니다.</p>
+  <a href="intro.html">詳しく見る | 자세히 보기</a>
+</section>
+
+<section id="menu">
+  <h2>メニュー | 메뉴</h2>
+  <div class="menu-grid">
+    <div class="menu-item">
+      <img src="동죽칼국수.webp" alt="トンジュッカルグクス | 동죽칼국수" loading="lazy">
+      <div class="text-box">
+        <h3>トンジュッカルグクス</h3>
+        <h3>동죽칼국수</h3>
+        <p>新鮮なアサリで煮込んだ深い味わい</p>
+        <p>신선한 바지락으로 끓인 깊은 맛</p>
+        <p>1,000円 | 10,000원</p>
+      </div>
+    </div>
+    <div class="menu-item">
+      <img src="칼낙지.webp" alt="カルナクチ | 칼낙지" loading="lazy">
+      <div class="text-box">
+        <h3>カルナクチ（2人前～）</h3>
+        <h3>낙지비빔칼국수(2인 이상)</h3>
+        <p>ピリ辛タコとカルグクスの絶妙な組み合わせ</p>
+        <p>매콤한 낙지와 칼국수의 환상 조합</p>
+        <p>1,300円 | 13,000원</p>
+      </div>
+    </div>
+    <div class="menu-item">
+      <img src="만두.webp" alt="マンドゥ | 만두" loading="lazy">
+      <div class="text-box">
+        <h3>マンドゥ</h3>
+        <h3>만두</h3>
+        <p>もちもちの皮とたっぷりの餡</p>
+        <p>쫄깃한 피와 풍부한 소</p>
+        <p>800円 | 8,000원</p>
+      </div>
+    </div>
+  </div>
+  <a href="menu.html">詳しく見る | 자세히 보기</a>
+</section>
+
+<section id="contact">
+  <h2>お問い合わせ | 문의</h2>
+  <p>ご予約・お問い合わせはお電話で承ります</p>
+  <p>예약 및 문의는 전화로 부탁드립니다</p>
+  <p>TEL.0507-1474-7402</p>
+</section>
+
+<section id="access">
+  <h2>アクセス | 오시는 길</h2>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.0130942386763!2d126.98139648924835!3d37.578309351359756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca30c6dd2573f%3A0xc2700c7802938b57!2z7JWI6rWt7JetIOunm-ynkSDsi6DrnbzsoJzrqbQg7JWI6rWt7KCQ44WjU2VvdWwgS29yZWFuIHJlc3RhdXJhbnQgc2lucmFqZW15ZW9u44Wj6Z-T5Zu95paZ55CGIOODrOOCueODiOODqeODsyDpo7Lpo5_lupcg5paw576F6KO96bq644Wj44Kr44Or44Kw44Kv44K5IOe-jumjnw!5e0!3m2!1sko!2skr!4v1757323494926!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <p>ソウル特別市 鍾路区 桂洞キル19-6 1階</p>
+  <p>서울특별시 종로구 계동길 19-6 1층</p>
+</section>
+
+<section id="blog">
+  <h2>ブログ | 블로그</h2>
+  <p>最新情報を掲載しています</p>
+  <p>최신 소식을 전해드립니다</p>
+  <div class="blog">
+    <a href="https://www.instagram.com/shillajemyeon_anguk?igsh=Y21sYnJrYWZ2bG54" target="_blank">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="40" height="40" fill="#E4405F">
+        <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 
+        114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 
+        141zm0 189.6c-41.2 0-74.7-33.5-74.7-74.7s33.5-74.7 
+        74.7-74.7 74.7 33.5 74.7 74.7-33.5 74.7-74.7 
+        74.7zm146.4-194.3c0 14.9-12 26.9-26.9 
+        26.9-14.9 0-26.9-12-26.9-26.9s12-26.9 
+        26.9-26.9 26.9 12 26.9 26.9zm76.1 
+        27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 
+        0-35.9 1.7-67.7 9.9-93.9 
+        36.2-26.2 26.2-34.4 58-36.2 
+        93.9-2.1 37-2.1 147.9 0 184.9 1.7 
+        35.9 9.9 67.7 36.2 93.9 26.2 26.2 
+        58 34.4 93.9 36.2 37 2.1 147.9 
+        2.1 184.9 0 35.9-1.7 67.7-9.9 
+        93.9-36.2 26.2-26.2 34.4-58 
+        36.2-93.9 2.1-37 2.1-147.9 
+        0-184.9zM398.8 388c-7.8 
+        19.6-22.9 34.7-42.6 
+        42.6-29.5 11.7-99.5 9-132.1 
+        9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 
+        9-132.1c7.8-19.6 22.9-34.7 
+        42.6-42.6 29.5-11.7 99.5-9 
+        132.1-9s102.7-2.6 132.1 
+        9c19.6 7.8 34.7 22.9 42.6 
+        42.6 11.7 29.5 9 99.5 9 
+        132.1s2.7 102.7-9 
+        132.1z"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 シンラ製麺 安国店 | 신라제면 안국점</p>
+</footer>
+
+<script>
+function toggleMenu(){ 
+  document.getElementById("nav-menu").classList.toggle("show"); 
+}
+</script>
+
+</body>
+</html>
